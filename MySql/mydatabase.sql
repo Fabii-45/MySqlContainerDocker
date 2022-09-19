@@ -1,0 +1,33 @@
+DROP TABLE EXPOSE;
+DROP TABLE OEUVRE;
+DROP TABLE SALLE;
+
+CREATE TABLE SALLE (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nom VARCHAR(50)
+	);
+CREATE TABLE OEUVRE (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nom VARCHAR(50)
+	);
+	
+CREATE TABLE EXPOSE(
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	date_exposition DATE NOT NULL,
+	id_salle int NOT NULL,
+	id_oeuvre int NOT NULL,
+	FOREIGN KEY (id_salle) REFERENCES SALLE(id),
+	FOREIGN KEY (id_oeuvre) REFERENCES OEUVRE(id)
+	);
+	
+INSERT INTO SALLE (NOM) VALUES ('Grande salle 1');
+INSERT INTO SALLE (NOM) VALUES ('Hall');
+INSERT INTO SALLE (NOM) VALUES ('Reserve');
+
+INSERT INTO OEUVRE (NOM) VALUES ('Le fiak de ta daronne');
+INSERT INTO OEUVRE (NOM) VALUES ('La calvas du daron');
+INSERT INTO OEUVRE (NOM) VALUES ('Les gros roberts de ta soeurette');
+
+INSERT INTO EXPOSE (date_exposition,id_salle,id_oeuvre) VALUES ('2022-09-14',1,1);
+INSERT INTO EXPOSE (date_exposition,id_salle,id_oeuvre) VALUES ('2022-09-14',2,2);
+INSERT INTO EXPOSE (date_exposition,id_salle,id_oeuvre) VALUES ('2022-09-14',3,3);
